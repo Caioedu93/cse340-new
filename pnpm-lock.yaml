@@ -41,6 +41,9 @@ importers:
       express-validator:
         specifier: ^7.2.1
         version: 7.2.1
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       pg:
         specifier: ^8.8.0
         version: 8.13.3
