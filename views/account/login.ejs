@@ -1,0 +1,43 @@
+<%- messages() %>
+
+<% if (locals.errors) { %>
+    <div class="error-container">
+        <ul>
+            <% locals.errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    </div>
+<% } %>
+
+<div class="login-page-container">
+    <div class="login-form-container">
+        <h1><%= title %></h1>
+        <form action="/account/" method="post">
+            <label for="account_email">Email:</label>
+            <input type="email" id="account_email" name="account_email" required value="<%= locals.account_email %>">
+            <label for="account_password">Password:</label>
+            <span>Password must have minimum 12 characters, 1 capital letter, at least 1 number, 1 special character</span>
+            <input type="password" id="account_password" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+            placeholder="password">
+            <button type="submit">Login</button>
+        </form>
+        <label>Show Password <br>
+        <input type="checkbox" id="showPassword"> 
+        </label>
+            
+        <p>Password must have minimum 12 characters, 1 capital letter, at least 1 number, 1 special character</p><br>
+        <p>Don't have an account? <a href="/account/register">Register here</a></p>
+    </div>
+</div>
+<script>
+    const passwordInput = document.getElementById("account_password");
+    const showPasswordCheckbox = document.getElementById("showPassword");
+    showPasswordCheckbox.addEventListener("change", function () {
+        if (this.checked) {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    });
+</script>

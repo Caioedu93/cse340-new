@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+    <main>
+        <h1><%= title %></h1> <!-- Title will display the error status, like "404 - Error" -->
+        
+        <!-- Display the error message -->
+        <% if (message) { %>
+            <div class="error-message">
+                <h2>Oops!</h2>
+                <p><%- message %></p> <!-- This will show the error message -->
+            </div>
+        <% } %>
+    </main>
+
+</body>
+</html>

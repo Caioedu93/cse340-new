@@ -1,0 +1,36 @@
+<div class="inventory-page-container">
+    <div class="inventory-form-container">
+      <%- messages() %>
+      <h1>Add New Inventory Item</h1>
+      <% if (locals.errors) { %>
+        <ul class="error-container">
+          <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+      <% } %>
+      <form action="/inv/add-inventory" method="post">
+        <label for="inv_make">Make:</label>
+        <input type="text" id="inv_make" name="inv_make" value="<%= locals.inv_make %>" placeholder="Min of 3 characters" required pattern=".{3,}">
+        <label for="inv_model">Model:</label>
+        <input type="text" id="inv_model" name="inv_model" value="<%= locals.inv_model %>" placeholder="Min of 3 characters" required pattern=".{3,}">
+        <label for="inv_year">Year:</label>
+        <input type="number" id="inv_year" name="inv_year" value="<%= locals.inv_year %>" placeholder="4-digit year" required pattern="[0-9]{4}">
+        <label for="inv_description">Description:</label>
+        <textarea id="inv_description" name="inv_description" required><%= locals.inv_description %></textarea>
+        <label for="inv_image">Image Path:</label>
+        <input type="text" id="inv_image" name="inv_image" value="<%= locals.inv_image %>" required>
+        <label for="inv_thumbnail">Thumbnail Path:</label>
+        <input type="text" id="inv_thumbnail" name="inv_thumbnail" value="<%= locals.inv_thumbnail %>" required>
+        <label for="inv_price">Price:</label>
+        <input type="number" id="inv_price" name="inv_price" value="<%= locals.inv_price %>" placeholder="decimal or integer" required pattern="[0-9]+(\.[0-9]{1,2})?">
+        <label for="inv_miles">Miles:</label>
+        <input type="number" id="inv_miles" name="inv_miles" value="<%= locals.inv_miles %>" placeholder="digits only" required pattern="[0-9]+">
+        <label for="inv_color">Color:</label>
+        <input type="text" id="inv_color" name="inv_color" value="<%= locals.inv_color %>" required>
+        <label for="classification_id">Classification:</label>
+        <%- classificationList %>
+        <button type="submit">Add Inventory Item</button>
+      </form>
+    </div>
+  </div>
